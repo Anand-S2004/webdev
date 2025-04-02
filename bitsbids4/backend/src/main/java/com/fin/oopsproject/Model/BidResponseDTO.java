@@ -20,8 +20,6 @@ public class BidResponseDTO {
     // Default constructor
     public BidResponseDTO() {
     }
-
-    // Parameterized constructor
     public BidResponseDTO(Long userId, Long bidId, Long bid, Long productId, Date time, boolean activeStatus) {
         this.userId = userId;
         this.bidId = bidId;
@@ -55,6 +53,14 @@ public class BidResponseDTO {
     public void setBid(Long bid) {
         this.bid = bid;
     }
+   public long exceeds() {
+    for (long bid : bids) {
+        if (bid > maxBid) {
+            maxBid = bid;
+        }
+    }
+    return maxBid;
+}
 
     public Long getProductId() {
         return productId;
